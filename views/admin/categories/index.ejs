@@ -1,0 +1,48 @@
+<%- include('../../partials/header') %>
+<body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <hr>
+        <h2 class="text-center">Categorias</h2>
+        <button class="btn btn-primary" onclick="window.location.href='/admin/categories/new'">Nova Categoria</button>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col">ID</th>
+                    <th class="col">Título</th>
+                    <th class="col">Slug</th>
+                    <th class="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach(function(category){ %>
+                    <tr>
+                        <th class="col"><%= category.id %></th>
+                        <th class="col"><%= category.title %></th>
+                        <th class="col"><%= category.slug %></th>
+                        <th class="col">
+                            <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-primary">Editar</a>
+                            <a href="/admin/categories/delete/<%= category.id %>" class="btn btn-danger" onclick="deleteCategory(event)" >Excluir</a>
+                        </th>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+<%- include('../../partials/footer') %>
+
+<script>
+    function deleteCategory(event){
+        event.preventDefault();
+        var decision = confirm("Deseja realmente excluir esta categoria?");
+        if(decision){
+            window.location.href = event.target.href;
+        }else{
+            return false;
+        }
+
+    }
+</script>

@@ -1,0 +1,19 @@
+<%- include('../../partials/header') %>
+<body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <div class="card mt-2">
+            <div class="card-header">
+                <h2>Criação de Usuário</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="/users/save">
+                    <input type="text" class="form-control" name="username" placeholder="Defina o username">
+                    <input type="password" class="form-control mt-1" name="password" placeholder="Defina a senha do usuário">
+                    <button type="submit" class="btn btn-success mt-2">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../partials/footer') %>

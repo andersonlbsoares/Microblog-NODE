@@ -1,0 +1,21 @@
+<%- include('../../partials/header') %>
+<body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <a href="/admin/users/create" class="btn btn-primary mt-2">Novo usuário</a>
+        <table class="table">
+            <thead>
+                <th class="col">Username</th>
+                <th class="col">Senha</th>
+            </thead>
+            <tbody>
+                <% users.forEach(function(user){ %>
+                    <tr>
+                        <td><%= user.username %></td>
+                        <td><%= user.password %></td>
+                    </tr>
+                <% }) %>
+        </table>
+    </div>
+</body>
+<%- include('../../partials/footer') %>

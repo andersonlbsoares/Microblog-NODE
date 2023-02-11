@@ -1,0 +1,50 @@
+<%- include('../../partials/header') %>
+<body>
+    <%- include('../../partials/navbar') %>
+    <div class="container">
+        <hr>
+        <h2 class="text-center">Artigos</h2>
+        <button class="btn btn-primary" onclick="window.location.href='/admin/articles/new'">Novo Artigo</button>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col">ID</th>
+                    <th class="col">Título</th>
+                    <th class="col">Slug</th>
+                    <th class="col">Categoria</th>
+                    <th class="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% articles.forEach(function(article){ %>
+                    <tr>
+                        <td class="col"><%= article.id %></td>
+                        <td class="col"><%= article.title %></td>
+                        <td class="col"><%= article.slug %></td>
+                        <td class="col"><%= article.category.title %></td>
+                        <th class="col">
+                            <a href="/admin/articles/edit/<%= article.id %>" class="btn btn-primary">Editar</a>
+                            <a href="/admin/articles/delete/<%= article.id %>" class="btn btn-danger" onclick="deletearticle(event)" >Excluir</a>
+                        </th>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+<%- include('../../partials/footer') %>
+
+<script>
+    function deletearticle(event){
+        event.preventDefault();
+        var decision = confirm("Deseja realmente excluir este artigo?");
+        if(decision){
+            window.location.href = event.target.href;
+        }else{
+            return false;
+        }
+
+    }
+</script>
